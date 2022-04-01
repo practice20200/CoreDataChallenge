@@ -54,6 +54,7 @@ class CoreDataDescriptionViewController: UIViewController {
     @objc func saveHandler(){
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+        
         let entity = NSEntityDescription.entity(forEntityName: "Note", in: context)
         let newNote = Note(entity: entity!, insertInto: context)
         let vc = CoreDataPracticeViewController()

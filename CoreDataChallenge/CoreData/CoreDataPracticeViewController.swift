@@ -84,7 +84,14 @@ class CoreDataPracticeViewController: UIViewController {
 }
 
 extension CoreDataPracticeViewController : UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CoreDataTableViewCell
+        let item = CoreDataPracticeViewController.noteData[indexPath.row]
+        if cell.titleLable.text == item.title {
+            let vc = CoreDataDetailViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
 
 extension CoreDataPracticeViewController : UITableViewDataSource {
@@ -98,7 +105,6 @@ extension CoreDataPracticeViewController : UITableViewDataSource {
         
         cell.titleLable.text = item.title
         cell.descLabel.text = item.desc
-//        cell.setupView()
         return cell
     }
     
