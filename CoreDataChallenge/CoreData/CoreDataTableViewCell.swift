@@ -12,6 +12,7 @@ class CoreDataTableViewCell: UITableViewCell {
 
     lazy var titleLable : BaseUILabel = {
         let label = BaseUILabel()
+        
         label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         return label
     }()
@@ -27,8 +28,8 @@ class CoreDataTableViewCell: UITableViewCell {
         stack.addArrangedSubview(titleLable)
         stack.addArrangedSubview(descLabel)
         stack.spacing = 16
-        stack.isLayoutMarginsRelativeArrangement = true
-        stack.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+//        stack.isLayoutMarginsRelativeArrangement = true
+//        stack.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         return stack
     }()
     
@@ -46,11 +47,13 @@ class CoreDataTableViewCell: UITableViewCell {
     func setupView() {
         contentView.addSubview(contentStack)
         NSLayoutConstraint.activate([
-            contentStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            contentStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            contentStack.topAnchor.constraint(equalTo: contentView.topAnchor),
-            contentStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            
+            contentStack.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+//            contentStack.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
+            contentStack.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 20),
+//            contentStack.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor),
+//            contentStack.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+//            contentStack.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+//
         ])
     }
     
