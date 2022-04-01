@@ -17,6 +17,7 @@
 		B3E2A24927F78B9C0072686A /* CoreDataPracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E2A24827F78B9C0072686A /* CoreDataPracticeViewController.swift */; };
 		B3E2A24C27F78BD20072686A /* Elements in Frameworks */ = {isa = PBXBuildFile; productRef = B3E2A24B27F78BD20072686A /* Elements */; };
 		B3E2A24E27F78C7A0072686A /* CoreDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E2A24D27F78C7A0072686A /* CoreDataTableViewCell.swift */; };
+		B3E2A25027F792530072686A /* CoreDataDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E2A24F27F792530072686A /* CoreDataDescriptionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		B3E2A24127F788EE0072686A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3E2A24827F78B9C0072686A /* CoreDataPracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPracticeViewController.swift; sourceTree = "<group>"; };
 		B3E2A24D27F78C7A0072686A /* CoreDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewCell.swift; sourceTree = "<group>"; };
+		B3E2A24F27F792530072686A /* CoreDataDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDescriptionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			children = (
 				B3E2A24827F78B9C0072686A /* CoreDataPracticeViewController.swift */,
 				B3E2A24D27F78C7A0072686A /* CoreDataTableViewCell.swift */,
+				B3E2A24F27F792530072686A /* CoreDataDescriptionViewController.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3E2A24E27F78C7A0072686A /* CoreDataTableViewCell.swift in Sources */,
+				B3E2A25027F792530072686A /* CoreDataDescriptionViewController.swift in Sources */,
 				B3E2A23B27F788EB0072686A /* CoreDataChallenge.xcdatamodeld in Sources */,
 				B3E2A23527F788EB0072686A /* ViewController.swift in Sources */,
 				B3E2A23127F788EB0072686A /* AppDelegate.swift in Sources */,
