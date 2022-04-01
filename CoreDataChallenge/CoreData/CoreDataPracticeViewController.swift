@@ -10,6 +10,8 @@ import UIKit
 
 
 class CoreDataPracticeViewController: UIViewController {
+    var noteData = [Note]()
+    
         
     lazy var tableView: UITableView = {
         let table = UITableView()
@@ -44,11 +46,16 @@ extension CoreDataPracticeViewController : UITableViewDelegate {
 
 extension CoreDataPracticeViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return noteData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CoreDataTableViewCell
+        let item = noteData[indexPath.row]
+        
+        cell.titleLable.text = item.title
+        cell.descLabel.text = item.desc
+//        cell.setupView()
         return cell
     }
 }

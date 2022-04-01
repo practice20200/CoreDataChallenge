@@ -10,26 +10,57 @@ import Elements
 
 class CoreDataTableViewCell: UITableViewCell {
 
-    lazy var title : BaseUILabel = {
+    lazy var titleLable : BaseUILabel = {
         let label = BaseUILabel()
         label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         return label
     }()
     
-    lazy var desc: BaseUILabel = {
+    lazy var descLabel : BaseUILabel = {
         let label = BaseUILabel()
         label.font = UIFont.preferredFont(forTextStyle: .body)
         return label
     }()
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    lazy var contentStack: VStack = {
+        let stack = VStack()
+        stack.addArrangedSubview(titleLable)
+        stack.addArrangedSubview(descLabel)
+        stack.spacing = 16
+        stack.isLayoutMarginsRelativeArrangement = true
+        stack.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        return stack
+    }()
+    
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupView()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupView()
     }
+    
+    func setupView() {
+        contentView.addSubview(contentStack)
+        NSLayoutConstraint.activate([
+            contentStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            contentStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            contentStack.topAnchor.constraint(equalTo: contentView.topAnchor),
+            contentStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+        ])
+    }
+    
+    func updateView(
+        title: String,
+        desc: String
+        
+    ) {
+        titleLable.text = title
+        descLabel.text = desc
+    }
+    
 }
