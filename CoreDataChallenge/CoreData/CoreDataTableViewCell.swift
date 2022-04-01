@@ -6,8 +6,21 @@
 //
 
 import UIKit
+import Elements
 
 class CoreDataTableViewCell: UITableViewCell {
+
+    lazy var title : BaseUILabel = {
+        let label = BaseUILabel()
+        label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        return label
+    }()
+    
+    lazy var desc: BaseUILabel = {
+        let label = BaseUILabel()
+        label.font = UIFont.preferredFont(forTextStyle: .body)
+        return label
+    }()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,5 +32,4 @@ class CoreDataTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

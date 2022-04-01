@@ -66,8 +66,8 @@
 			children = (
 				B3E2A24727F78B7D0072686A /* CoreData */,
 				B3E2A23027F788EB0072686A /* AppDelegate.swift */,
-				B3E2A23227F788EB0072686A /* SceneDelegate.swift */,
 				B3E2A23427F788EB0072686A /* ViewController.swift */,
+				B3E2A23227F788EB0072686A /* SceneDelegate.swift */,
 				B3E2A23627F788EB0072686A /* Main.storyboard */,
 				B3E2A23C27F788EE0072686A /* Assets.xcassets */,
 				B3E2A23E27F788EE0072686A /* LaunchScreen.storyboard */,

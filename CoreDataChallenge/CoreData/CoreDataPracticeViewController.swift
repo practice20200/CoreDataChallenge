@@ -22,7 +22,7 @@ class CoreDataPracticeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = .red
         
         view.addSubview(tableView)
         tableView.delegate = self
@@ -44,7 +44,7 @@ extension CoreDataPracticeViewController : UITableViewDelegate {
 
 extension CoreDataPracticeViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
