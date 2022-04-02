@@ -26,10 +26,10 @@ class CoreDataDeleteViewController: UIViewController {
     
     lazy var button : BaseUIButton = {
         let button = BaseUIButton()
-        button.setTitle("Test", for: .normal)
+        button.setTitle("Delete", for: .normal)
         button.widthAnchor.constraint(equalToConstant: 200).isActive = true
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.backgroundColor = .blue
+        button.backgroundColor = .red
         button.layer.cornerRadius = 25
         button.addTarget(self, action: #selector(moveHandler), for: .touchUpInside)
         return button
@@ -42,16 +42,21 @@ class CoreDataDeleteViewController: UIViewController {
         if indexPath != nil {
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
             do{
+                
                 let results: NSArray = try context.fetch(request) as NSArray
+                
                 for result in results {
                     let note = result as! Note
-                    if indexPath == Int(truncating: note.id){
+                    if note.title == CoreDataPracticeViewController.noteData[indexPath ?? -1].title{
+                        context.delete(note)
+                        try context.save()
                         note.title = "Deleted"
                         note.desc = "Deleted"
+                        context.delete(note)
                         print("result \(result)")
+                        
                     }
                 }
-                navigationController?.popViewController(animated: true)
             }catch{
                 print("Fetch failed")
             }

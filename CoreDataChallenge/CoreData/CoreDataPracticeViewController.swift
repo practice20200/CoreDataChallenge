@@ -58,6 +58,7 @@ class CoreDataPracticeViewController: UIViewController {
     
     deinit{
         CoreDataPracticeViewController.noteData = [Note]()
+        print("============================deinit")
     }
     
     func loading(){
@@ -71,9 +72,7 @@ class CoreDataPracticeViewController: UIViewController {
                 let results: NSArray = try context.fetch(request) as NSArray
                 for result in results {
                     let note = result as! Note
-//                    if note.deltedDate != nil {
-//                        CoreDataPracticeViewController.noteData.remove(at: Int(truncating: note.id))
-//                    }
+
                     
                     CoreDataPracticeViewController.noteData.append(note)
                     refdata.append(note)
@@ -109,6 +108,7 @@ extension CoreDataPracticeViewController : UITableViewDelegate {
 
             let vc = CoreDataDeleteViewController()
             vc.indexPath = indexPath.row
+            print("vc.indexPath: \(vc.indexPath)")
             navigationController?.pushViewController(vc, animated: true)
         }
     }

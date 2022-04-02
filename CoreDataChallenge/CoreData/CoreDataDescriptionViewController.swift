@@ -75,9 +75,6 @@ class CoreDataDescriptionViewController: UIViewController {
                 }
             }
             CoreDataPracticeViewController.noteData.append(newNote)
-            let vc = CoreDataPracticeViewController()
-            vc.refdata.append(newNote)
-            dismiss(animated: true)
             print("Scceeded: \(CoreDataPracticeViewController.noteData)")
         }catch {
             print("context save error")
