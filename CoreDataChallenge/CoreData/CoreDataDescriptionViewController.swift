@@ -11,6 +11,8 @@ import Elements
 
 
 class CoreDataDescriptionViewController: UIViewController {
+   
+    var indexPath: Int?
     
     lazy var titleTF : BaseUITextField = {
         let tf = BaseUITextField()
@@ -55,21 +57,48 @@ class CoreDataDescriptionViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
         
+        if indexPath == nil {
+        
         let entity = NSEntityDescription.entity(forEntityName: "Note", in: context)
         let newNote = Note(entity: entity!, insertInto: context)
-        let vc = CoreDataPracticeViewController()
+        
         newNote.id = CoreDataPracticeViewController.noteData.count as NSNumber
         newNote.title = titleTF.text
         newNote.desc = descTF.text
         
+        guard titleTF.text != nil , descTF.text != nil else{ return }
         do {
             try context.save()
+            for i in CoreDataPracticeViewController.noteData{
+                if i.title == newNote.title {
+                    return
+                }
+            }
             CoreDataPracticeViewController.noteData.append(newNote)
-//            navigationController?.popViewController(animated: true)
+            let vc = CoreDataPracticeViewController()
+            vc.refdata.append(newNote)
             dismiss(animated: true)
             print("Scceeded: \(CoreDataPracticeViewController.noteData)")
         }catch {
             print("context save error")
+        }
+            
+        }else {
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+            
+            do{
+                let results: NSArray = try context.fetch(request) as NSArray
+                for result in results {
+                    let note = result as! Note
+                    if indexPath == Int(truncating: note.id){
+                        note.title = titleTF.text
+                        note.desc = descTF.text
+                        print("result \(result)")
+                    }
+                }
+            }catch{
+                print("Fetch failed")
+            }
         }
     }
 

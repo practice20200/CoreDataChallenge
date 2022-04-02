@@ -12,21 +12,22 @@ import CoreData
 
 class CoreDataPracticeViewController: UIViewController {
     static var noteData = [Note]()
+    var refdata = [Note]()
     
     var firstLoad = true
     
     lazy var tableView: UITableView = {
         let table = UITableView()
         table.backgroundColor = UIColor.blue
-//        table.layer.shadowColor = UIColor.lightGray.cgColor
         table.layer.opacity = 0.8
         return table
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
         
-        view.backgroundColor = .red
+        loading()
         
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
@@ -40,7 +41,6 @@ class CoreDataPracticeViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(CoreDataTableViewCell.self, forCellReuseIdentifier: "cell")
-//        tableView.reloadData()
         
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addHandler))
         self.navigationItem.rightBarButtonItem = addButton
@@ -62,11 +62,13 @@ class CoreDataPracticeViewController: UIViewController {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context : NSManagedObjectContext = appDelegate.persistentContainer.viewContext
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+            
             do{
                 let results: NSArray = try context.fetch(request) as NSArray
                 for result in results {
                     let note = result as! Note
                     CoreDataPracticeViewController.noteData.append(note)
+                    refdata.append(note)
                 }
             }catch{
                 print("Fetch failed")
@@ -76,8 +78,6 @@ class CoreDataPracticeViewController: UIViewController {
   
     @objc func addHandler() {
         let vc = CoreDataDescriptionViewController()
-//        let naVC = UINavigationController(rootViewController: vc)
-//        present(naVC, animated: true)
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -85,11 +85,19 @@ class CoreDataPracticeViewController: UIViewController {
 
 extension CoreDataPracticeViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CoreDataTableViewCell
-        let item = CoreDataPracticeViewController.noteData[indexPath.row]
-        if cell.titleLable.text == item.title {
-            let vc = CoreDataDetailViewController()
-            navigationController?.pushViewController(vc, animated: true)
+        let vc = CoreDataDescriptionViewController()
+        
+        vc.indexPath = indexPath.row
+        
+        navigationController?.pushViewController(vc, animated: true)
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            refdata.remove(at: indexPath.row-1)
+            CoreDataPracticeViewController.noteData = refdata
         }
     }
 }
@@ -100,6 +108,7 @@ extension CoreDataPracticeViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CoreDataTableViewCell
         let item = CoreDataPracticeViewController.noteData[indexPath.row]
         
