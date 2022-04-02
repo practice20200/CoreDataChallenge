@@ -56,6 +56,10 @@ class CoreDataPracticeViewController: UIViewController {
         tableView.frame = view.bounds
     }
     
+    deinit{
+        CoreDataPracticeViewController.noteData = [Note]()
+    }
+    
     func loading(){
         if firstLoad {
             firstLoad = false
@@ -67,6 +71,10 @@ class CoreDataPracticeViewController: UIViewController {
                 let results: NSArray = try context.fetch(request) as NSArray
                 for result in results {
                     let note = result as! Note
+//                    if note.deltedDate != nil {
+//                        CoreDataPracticeViewController.noteData.remove(at: Int(truncating: note.id))
+//                    }
+                    
                     CoreDataPracticeViewController.noteData.append(note)
                     refdata.append(note)
                 }
@@ -74,6 +82,8 @@ class CoreDataPracticeViewController: UIViewController {
                 print("Fetch failed")
             }
         }
+        
+    
     }
   
     @objc func addHandler() {
@@ -96,8 +106,10 @@ extension CoreDataPracticeViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
-            refdata.remove(at: indexPath.row-1)
-            CoreDataPracticeViewController.noteData = refdata
+
+            let vc = CoreDataDeleteViewController()
+            vc.indexPath = indexPath.row
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

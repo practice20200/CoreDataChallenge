@@ -19,7 +19,7 @@
 		B3E2A24E27F78C7A0072686A /* CoreDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E2A24D27F78C7A0072686A /* CoreDataTableViewCell.swift */; };
 		B3E2A25027F792530072686A /* CoreDataDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E2A24F27F792530072686A /* CoreDataDescriptionViewController.swift */; };
 		B3E2A25227F7940D0072686A /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E2A25127F7940D0072686A /* Note.swift */; };
-		B3E2A25427F7B2CE0072686A /* CoreDataDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E2A25327F7B2CE0072686A /* CoreDataDetailViewController.swift */; };
+		B3E2A25427F7B2CE0072686A /* CoreDataDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E2A25327F7B2CE0072686A /* CoreDataDeleteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +36,7 @@
 		B3E2A24D27F78C7A0072686A /* CoreDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewCell.swift; sourceTree = "<group>"; };
 		B3E2A24F27F792530072686A /* CoreDataDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDescriptionViewController.swift; sourceTree = "<group>"; };
 		B3E2A25127F7940D0072686A /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
-		B3E2A25327F7B2CE0072686A /* CoreDataDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDetailViewController.swift; sourceTree = "<group>"; };
+		B3E2A25327F7B2CE0072686A /* CoreDataDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDeleteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +90,7 @@
 				B3E2A24D27F78C7A0072686A /* CoreDataTableViewCell.swift */,
 				B3E2A24F27F792530072686A /* CoreDataDescriptionViewController.swift */,
 				B3E2A25127F7940D0072686A /* Note.swift */,
-				B3E2A25327F7B2CE0072686A /* CoreDataDetailViewController.swift */,
+				B3E2A25327F7B2CE0072686A /* CoreDataDeleteViewController.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -179,7 +179,7 @@
 				B3E2A23527F788EB0072686A /* ViewController.swift in Sources */,
 				B3E2A23127F788EB0072686A /* AppDelegate.swift in Sources */,
 				B3E2A23327F788EB0072686A /* SceneDelegate.swift in Sources */,
-				B3E2A25427F7B2CE0072686A /* CoreDataDetailViewController.swift in Sources */,
+				B3E2A25427F7B2CE0072686A /* CoreDataDeleteViewController.swift in Sources */,
 				B3E2A24927F78B9C0072686A /* CoreDataPracticeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
